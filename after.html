@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Announcement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fdf3e7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6b6b;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #444;
+            margin: 20px 0;
+        }
+        .storybook {
+            width: 60%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .page {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .button {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to our 2025 Minuscule Project!</h1>
+        <p> 💕</p>
+        <!-- <div class="countdown" id="countdown">Loading countdown...</div> -->
+    </div>
+
+    <div class="storybook">
+        <div class="page active" id="page1">
+            <h2>Chapter 1: "A New Chapter Begins"</h2>
+            <p>"Once upon a time, in a home filled with love and laughter, a beautiful journey was about to unfold. A new adventure, unlike any other, was on the horizon. It was a story of excitement and anticipation that would soon change everything..."</p>
+            <button class="button" onclick="nextPage(2)">Next</button>
+        </div>
+        <div class="page" id="page2">
+            <h2>Chapter 2: "A Little Secret in the Making"</h2>
+            <p>"As the days pass, something beautiful is happening. Whispers of joy fill the air, hearts are growing fuller, and life is about to become even more special. What could it be? Stay tuned as we unveil a secret close to our hearts..."</p>
+            <button class="button" onclick="nextPage(3)">Next</button>
+        </div>
+        <div class="page" id="page3">
+            <h2>Chapter 3: The Sweetest Surprise!</h2>
+            <p>"The moment you've been waiting for... We are beyond thrilled to share the news — 🎉</p>
+            <button class="button" onclick="nextPage(4)">Next</button>
+        </div>
+        <div class="page" id="page4">
+            <h2>Chapter 4: Almost there!</h2>
+            <p>"You...</p>
+
+            <button class="button" onclick="nextPage(5)">Next</button>
+        </div>
+        <div class="page" id="page4">
+            <h2>Chapter 4: Almost there!</h2>
+            <p>"You...</p>
+
+            <button class="button" onclick="nextPage(5)">Next</button>
+        </div>
+        <div class="page" id="page5">
+            <h2>Chapter 5: Almost there!</h2>
+            <p>" have ...</p>
+
+            <button class="button" onclick="nextPage(6)">Next</button>
+        </div>
+        <div class="page" id="page6">
+            <h2>Chapter 6: Almost there!</h2>
+            <p>" been ...</p>
+
+            <button class="button" onclick="nextPage(7)">Next</button>
+        </div>
+        <div class="page" id="page7">
+            <h2>Chapter 7: Almost there!</h2>
+            <p>" promoted ...</p>
+
+            <button class="button" onclick="nextPage(8)">Next</button>
+        </div>
+        <div class="page" id="page8">
+            <h2>Chapter 8: Almost there!</h2>
+            <p>" to ...</p>
+
+            <button class="button" onclick="nextPage(9)">Next</button>
+        </div>
+        <div class="page" id="page9">
+            <h2>Chapter 9: Almost there!</h2>
+            <p>" becoming ...</p>
+
+            <button class="button" onclick="nextPage(10)">Next</button>
+        </div>
+        <div class="page" id="page10">
+            <h2>Chapter 10: The Big Day Arrives!</h2>
+            <p>
+               <b style="font-size: 25px;"> Babaji and Dadiji! 👶👶👶 </b> <br><br>
+               Congratulations!!!!
+            </p>
+            <!-- <button class="button" onclick="nextPage(4)">Next</button> -->
+        </div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const dueDate = new Date("2025-06-01").getTime(); // Set due date
+            const now = new Date().getTime();
+            const difference = dueDate - now;
+
+            if (difference < 0) {
+                document.getElementById("countdown").innerHTML = "Baby has arrived! 🎉";
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s until baby arrives!`;
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        function nextPage(pageNumber) {
+            document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+            document.getElementById(`page${pageNumber}`).classList.add("active");
+        }
+    </script>
+</body>
+</html>
