@@ -129,9 +129,37 @@
             }
         }
 
+        canvas.addEventListener("touchstart", (event) => {
+    isScratching = true;
+    event.preventDefault(); // Prevent scrolling
+});
+
+canvas.addEventListener("touchend", (event) => {
+    isScratching = false;
+    setTimeout(checkReveal, 500);
+    event.preventDefault();
+});
+
+canvas.addEventListener("touchmove", (event) => {
+    if (!isScratching) return;
+    event.preventDefault(); // Prevent scrolling
+
+    const rect = canvas.getBoundingClientRect();
+    const touch = event.touches[0]; // Get first touch point
+
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+
+    ctx.globalCompositeOperation = "destination-out";
+    ctx.beginPath();
+    ctx.arc(x, y, 15, 0, Math.PI * 2);
+    ctx.fill();
+});
         canvas.addEventListener("mousedown", startScratch);
         canvas.addEventListener("mouseup", stopScratch);
         canvas.addEventListener("mousemove", scratch);
+
+       
 
         // Countdown Timer
         function countdownTimer() {
